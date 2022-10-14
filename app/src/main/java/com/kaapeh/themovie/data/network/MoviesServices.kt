@@ -15,7 +15,15 @@ class MoviesServices {
     {
         return withContext(Dispatchers.IO){
         val response : Response <moviesModel> = retrofit.create(MoviesApiClient::class.java).getAllMovies()
-         response.body() ?: emptyMoviesModel.getEmptyMovies()
+
+        if (response.isSuccessful)
+        {
+            response.body() ?: emptyMoviesModel.getEmptyMovies()
+        }else
+        {
+            emptyMoviesModel.getEmptyMovies()
+        }
+
             }
     }
 }

@@ -28,16 +28,27 @@ class Descripcion : AppCompatActivity() {
         }
         movieViewModel.descripcion.observe(this, Observer{
             if (it != null) {
-                val ruta = "https://image.tmdb.org/t/p/original${it.poster_path}"
+                if (it.original_title == "null")
+                {
+                   binding.ivNoSignal.isVisible = true
+                    binding.btnRetry.isVisible = true
+                    binding.clVista.isVisible = false
+                    binding.pbDescripcion.isVisible = false
+                }
+                else {
+                    val ruta = "https://image.tmdb.org/t/p/original${it.poster_path}"
 
-                Log.e("TAG", "ruta    $", )
-                Picasso.get().load(ruta).into(binding.ivDescripcion)
-                binding.tvTitulo.text = it.original_title
-                binding.tvRated.text = it.vote_average.toString()
-                binding.tvfecha.text = " Fecha de estreno : ${it.release_date}"
-                binding.tvDescripcion.text = it.overview
-                Log.e("TAG", "descripcion ${it.original_title}"  )
+                    Log.e("TAG", "ruta    $",)
+                    Picasso.get().load(ruta).into(binding.ivDescripcion)
+                    binding.tvTitulo.text = it.original_title
+                    binding.tvRated.text = it.vote_average.toString()
+                    binding.tvfecha.text = " Fecha de estreno : ${it.release_date}"
+                    binding.tvDescripcion.text = it.overview
+                    Log.e("TAG", "descripcion ${it.original_title}")
+
+                }
             }
+
         })
 
 
@@ -50,5 +61,13 @@ class Descripcion : AppCompatActivity() {
             binding.clVista.isVisible = it
         })
 
+        binding.btnRetry.setOnClickListener {
+
+            if (id != null) {
+                binding.btnRetry.isVisible= false
+                binding.ivNoSignal.isVisible=false
+                movieViewModel.Description(id)
+            }
+        }
     }
 }

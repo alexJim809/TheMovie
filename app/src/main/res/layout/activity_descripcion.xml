@@ -9,18 +9,26 @@
     >
 
 
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       >
+
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/clVista"
         android:visibility="gone"
         >
 
     <ImageView
+        android:scaleType="centerCrop"
         android:id="@+id/ivDescripcion"
         android:layout_width="match_parent"
         android:layout_height="350dp"
@@ -123,6 +131,8 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+   </ScrollView>
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -133,4 +143,34 @@
         android:id="@+id/pbDescripcion"
         />
 
+
+    <ImageView
+        android:id="@+id/ivNoSignal"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/nosignal"
+        android:visibility="gone"
+
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Reintentar"
+        android:backgroundTint="@color/rojo"
+        android:textColor="@color/white"
+        android:id="@+id/btnRetry"
+        android:visibility="gone"
+
+
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
